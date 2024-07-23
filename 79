@@ -1,0 +1,23 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Main()
+    {
+        // Tạo một thread mới để chạy hàm DoWork
+        var thread = new Thread(new ThreadStart(DoWork));
+        thread.Start();
+        thread.Join(); // Đợi thread hoàn thành
+    }
+
+    // Hàm static để thực hiện trong thread
+    static void DoWork()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine("Worker thread: " + i);
+            Thread.Sleep(100); // Pause the worker thread for 100ms
+        }
+    }
+}
